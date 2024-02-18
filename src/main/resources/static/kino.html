@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <body>
+        <h1>Bestilling av Kinobilletter</h1>
+        <script src="kino.js"></script>
+        <div>
+            <label >Film:
+                <select id="film">
+                    
+                    <option selected disabled>Velg film her</option>
+                    <option value="Harry Potter">Harry Potter</option>
+                    <option value="Star Wars">Star Wars</option>
+                    <option value="Lord of the Rings">Lord of the Rings</option>
+                
+                </select>
+
+            </label>
+        </div>
+        
+        <br>
+
+        <table>
+            <td>Antall:</td> 
+            <td><input type="number" style="width: 2em" id="antall" required></td>
+            <td style="color:red;" id="tomtAntall"></td>
+        </table>
+
+        <br>
+
+        <table>
+
+            <tr>
+                <td>Fornavn</td>
+                <td><input type="text" id="fornavn"/></td>
+                <td style="color:red;" id="tomtFornavn"></td>
+            </tr>
+
+            <tr>
+                <td>Etternavn</td>
+                <td><input type="text" id="etternavn"/></td>
+                <td style="color:red" id="tomtEtternavn"></td>
+            </tr>
+
+            <tr>
+                <td>Telefonnr</td>
+                <td><input type="text" id="telefonnr"/></td>
+                <td style="color:red" id="tomTlf"></td>
+            </tr>
+
+            <tr>
+                <td>Epost:</td>
+                <td><input type="email" id="epost"/></td>
+                <td style="color:red" id="tomEpost"></td>
+            </tr>
+
+        </table>
+
+        <button onclick = "kjopBillett()">Kjøp billett</button>
+        <h2>Alle billetter</h2>
+        <h2 id="billetter"></h2>
+        <button onclick = "slettBillett()">Slett alle billettene</button>
+    </body>
+</html>
