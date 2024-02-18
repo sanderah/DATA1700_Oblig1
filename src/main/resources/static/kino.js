@@ -62,7 +62,7 @@ function validateTlf(tlf){ //Checks if tlf is valid
 }
 
 function validateEmail(epost){
-  return /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(epost); //Regex taken from https://stackoverflow.com/a/7635612
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(epost); //Regex taken from https://stackoverflow.com/a/7635612
 }
 
 function validerInput(antall,fornavn,etternavn,telefon,epost){ //Checks if input is valid
@@ -101,6 +101,14 @@ function validerInput(antall,fornavn,etternavn,telefon,epost){ //Checks if input
     document.getElementById('tomTlf').innerHTML = "";
   }
 
+  if (!validateEmail(epost)){
+    document.getElementById('tomEpost').innerHTML = "Skriv inn en gyldig epost";
+    result=false;
+  }
+  else {
+    document.getElementById('tomEpost').innerHTML = "";
+  }
+
   return result
 }
 
@@ -126,7 +134,7 @@ function kjopBillett(){ //Function for buying billett
   if (isEmpty(film,antall,fornavn,etternavn,telefon,epost)){ //Continues if input is not empty
     if (validerInput(antall,fornavn,etternavn,telefon,epost)){ //Continues if Input is valid
       let Billett=[] //Array for a single billett
-      Billett.push("Film: " + film + ", ", antall+" billetter, ", "navn: " + fornavn, etternavn, "tlf: " + telefon, "epost: " + epost) //Pushes content to billett array
+      Billett.push("Film: " + film + "  ", "Antall billetter: " + antall, "  navn: " + fornavn, etternavn, "  tlf: " + telefon, "   epost: " + epost) //Pushes content to billett array
       BillettArr.push(Billett.join("  ")) //pushes billett to the array of billetter
       for (i=0;i>BillettArr.length;i++){
 
