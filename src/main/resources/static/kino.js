@@ -62,7 +62,7 @@ function validateTlf(tlf){ //Checks if tlf is valid
 }
 
 function validateEmail(epost){
-
+  return /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(epost); //Regex taken from https://stackoverflow.com/a/7635612
 }
 
 function validerInput(antall,fornavn,etternavn,telefon,epost){ //Checks if input is valid
