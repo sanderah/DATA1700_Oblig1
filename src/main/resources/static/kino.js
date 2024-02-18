@@ -54,15 +54,15 @@ function isEmpty(film,antall,fornavn,etternavn,telefon,epost){ //Checks if input
 }
 
 function validateNavn(navn){ //Checks if name is valid
-  return /^[a-zA-Z()]+$/.test(navn);
+  return /^[a-zA-Z()]+$/.test(navn) && navn.length>=2; //Checks if name only contains alphabetic characters and is at least 2 characters long
 }
 
 function validateTlf(tlf){ //Checks if tlf is valid
-  return /^-?\d+$/.test(tlf) && tlf.length>=8;
+  return /^-?\d+$/.test(tlf) && tlf.length==8; //Checks if tlf is numeric and 8 characters long (norwegian phone nubmer length)
 }
 
-function validateEmail(epost){
-  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(epost); //Regex taken from https://stackoverflow.com/a/7635612
+function validateEmail(epost){ //Checks if email is valid
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(epost); //Regex taken from https://www.geeksforgeeks.org/javascript-program-to-validate-an-email-address/
 }
 
 function validerInput(antall,fornavn,etternavn,telefon,epost){ //Checks if input is valid
@@ -131,16 +131,14 @@ function kjopBillett(){ //Function for buying billett
   let telefon = document.getElementById("telefonnr").value;
   let epost = document.getElementById("epost").value;
 
+
   if (isEmpty(film,antall,fornavn,etternavn,telefon,epost)){ //Continues if input is not empty
     if (validerInput(antall,fornavn,etternavn,telefon,epost)){ //Continues if Input is valid
       let Billett=[] //Array for a single billett
       Billett.push("Film: " + film + "  ", "Antall billetter: " + antall, "  navn: " + fornavn, etternavn, "  tlf: " + telefon, "   epost: " + epost) //Pushes content to billett array
-      BillettArr.push(Billett.join("  ")) //pushes billett to the array of billetter
-      for (i=0;i>BillettArr.length;i++){
-
-      }
+      BillettArr.push(Billett.join("    ")) //pushes billett to the array of billetter
       document.getElementById("billetter").innerHTML = BillettArr.join("<br/>"); //Prints billetter
-      clearField()
+      clearField() //Clears input
     }
   }
 
